@@ -133,3 +133,7 @@ clean:
 deep-clean:
 	rm -rf bin/*
 	rm -rf *.gc{ov,da,no}
+
+CWD=$(shell pwd)
+rpm: csvtools.spec
+	rpmbuild --define "_topdir $(CWD)" --define "_builddir $(CWD)" -bb $<
